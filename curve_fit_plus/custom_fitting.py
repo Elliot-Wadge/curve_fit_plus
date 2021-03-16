@@ -20,17 +20,8 @@ def curve_fit_plus(f, x, y, p0 = None, sigma = None, absolute_sigma = False, sav
     #call the curve fit function
     pOpt, pCov = curve_fit(f,x,y,p0 = p0,sigma = sigma, absolute_sigma = absolute_sigma)
     
-    #start a string to store the values
-    string = ''
-    #iterate through pOpt
-    for i in pOpt:
-        #concatenate each value
-        string += str(i) + ','
-        
-    #add the finishing touches with the function and the brackets  
-    call = 'f(x,' + string + ')'
-    #run the string as code
-    fit = eval(call)
+    
+    fit = f(x,*pOpt)
     
     #get the residuals
     res = y - fit
