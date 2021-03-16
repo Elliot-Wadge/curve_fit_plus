@@ -15,7 +15,7 @@ setup(
     # Needed to actually package something
     packages=['curve_fit_plus'],
     # Needed for dependencies
-    install_requires=['numpy,scipy,matplotlib'],
+    install_requires=['numpy','scipy','matplotlib'],
     # *strongly* suggested for sharing
     version='0.1',
     # The license can be anything you like
