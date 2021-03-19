@@ -26,11 +26,16 @@ def curve_fit_plus(f, x, y, p0 = None, sigma = None, absolute_sigma = False, sav
     #get the residuals
     res = y - fit
     
-    #get the normalized residuals
-    norm_res = res/sigma
+    try:
+        #get the normalized residuals
+        norm_res = res/sigma
     
-    #get chi squared
-    chisq = sum(norm_res**2)
+        #get chi squared
+        chisq = sum(norm_res**2)
+    
+    except:
+        print('chisq set to zero error in res/sigma')
+        chisq = 0
     
     #plot the fit over the data
     plt.plot(x,fit,zorder = 2)
