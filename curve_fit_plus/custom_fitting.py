@@ -5,7 +5,6 @@
 
 
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
 
@@ -14,8 +13,6 @@ from scipy.optimize import curve_fit
 
 
 def curve_fit_plus(f, x, y, p0 = None, sigma = None, absolute_sigma = False, save = False):
-    #plot the original data with error bars as points
-    plt.errorbar(x,y,yerr = sigma, fmt = '.', zorder = 1)
     
     #call the curve fit function
     pOpt, pCov = curve_fit(f,x,y,p0 = p0,sigma = sigma, absolute_sigma = absolute_sigma)
@@ -26,22 +23,6 @@ def curve_fit_plus(f, x, y, p0 = None, sigma = None, absolute_sigma = False, sav
     #get the residuals
     res = y - fit
     
-    
-    
-    #plot the fit over the data
-    plt.plot(x,fit,zorder = 2)
-    
-    #if you want to save the data you have to enter the following data and make save = True
-    if save:
-        filename1 = input("what is the filename you want for your fit plot")
-        plt.ylabel(input("ylabel"))
-        plt.xlabel(input("xlabel"))
-        plt.legend(["data","fit"])
-        plt.savefig(filename1)
-    plt.show()
-    
-    
-    
     try:
         #get the normalized residuals
         norm_res = res/sigma
@@ -49,20 +30,13 @@ def curve_fit_plus(f, x, y, p0 = None, sigma = None, absolute_sigma = False, sav
         #get chi squared
         chisq = sum(norm_res**2)
         
-        plt.plot(x,norm_res,'o')
     
     except:
         print('chisq set to zero error in res/sigma')
         chisq = 0
     
     
-    if save:
-        filename2 = input("what is the filename you want for your normalized residuals")
-        plt.ylabel(input("ylabel"))
-        plt.xlabel(input("xlabel"))
-        plt.legend(["data","fit"])
-        plt.savefig(filename2)
-    plt.show()
+    
     
     error = np.sqrt(np.diag(pCov))
     for i in range(len(pOpt)):
