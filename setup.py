@@ -13,7 +13,7 @@ setup(
     author='Elliot Wadge',
     author_email='ewadge@sfu.ca',
     # Needed to actually package something
-    packages=['curve_fit_plus'],
+    packages=['curve_fit_plus', 'pl_class'],
     # Needed for dependencies
     install_requires=['numpy','scipy','matplotlib'],
     # *strongly* suggested for sharing
