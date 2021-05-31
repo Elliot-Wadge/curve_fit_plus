@@ -20,7 +20,7 @@ setup(
     version='0.1',
     # The license can be anything you like
     license='E',
-    description='a curve fitting routine to do a repetitive fitting routine',
+    description='a curve fitting routine to do a repetitive fitting routine, also a pl_class to assist in PL analysis',
     # We will also need a readme eventually (there will be a warning)
     # long_description=open('README.txt').read(),
 )
